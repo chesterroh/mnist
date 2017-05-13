@@ -56,6 +56,9 @@ with tf.name_scope("layer3"):
 
 # FC layer
 
+print('fuck fuck fuck')
+print(h_conv3.shape)
+
 with tf.name_scope("layer-4-fc"):
     W_fc1 = weight_variable([7*7*128,1024])
     b_fc1 = bias_variable([1024])
