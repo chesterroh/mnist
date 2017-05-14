@@ -95,7 +95,7 @@ def train(net,labels,cost):
     with tf.name_scope('training'):
         global_step = tf.Variable(0,trainable=False)
         start_learning_rate = 1e-4
-        learning_rate = tf.train.exponential_decay(start_learning_rate,global_step,5000,0.9,staircase=True)
+        learning_rate = tf.train.exponential_decay(start_learning_rate,global_step,5000,0.96,staircase=True)
         train_step =tf.train.AdamOptimizer(learning_rate).minimize(cost,global_step=global_step)
         correct_prediction = tf.equal(tf.argmax(net,1),tf.argmax(labels,1))
         accuracy = tf.reduce_mean(tf.cast(correct_prediction,tf.float32))
@@ -108,7 +108,7 @@ def train(net,labels,cost):
 
 batch_size = 50
 total_batch = int(mnist.train_data.data_length/batch_size)
-epoch = 10
+epoch = 20
 
 x = tf.placeholder(tf.float32,[None,28,28,1])
 y_  = tf.placeholder(tf.float32,[None,10])

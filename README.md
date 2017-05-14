@@ -1,3 +1,5 @@
+# May 14
+- (AI) change the dataset to normal mnist digit 0~9 dataset.. this would be the final trial with MNIST.. 
 
 # May 13
 
@@ -8,7 +10,8 @@
   
 - (AI:DONE) model save/restore 
 - (AI:DONE) BN inference after saved model restore + I SHOULD test the model with 'is_training=False'
-    --- previous test accuracy w/o BN was around 97%, should there be any progress?
+    --- previous test accuracy w/o BN was around 97%, should there be any progress? ==> 97.2% I think that's the limitation of this dataset..
+    
 
 - (AI:DONE) refactoring to inference/train/test module based on TF tutorial
 
