@@ -104,40 +104,17 @@ def train(net,labels,cost):
         saver = tf.train.Saver()
         return train_step, accuracy, saver
 
-# beginning of the main body
-
-batch_size = 50
-total_batch = int(mnist.train_data.data_length/batch_size)
-epoch = 1
+# you should open the session for the testing
 
 x = tf.placeholder(tf.float32,[None,28,28,1])
 y_  = tf.placeholder(tf.float32,[None,10])
 
-y = inference(x,is_training=True)
+y = inference(x,is_training=False)
 cross_entropy = cross_entropy(y,y_)
 train_step, accuracy, saver = train(y,y_,cross_entropy)
 
-# beginning of train step
-
 with tf.Session() as sess:
-    merged = tf.summary.merge_all()
-    train_writer = tf.summary.FileWriter("./summary/train",sess.graph)
-    test_writer = tf.summary.FileWriter("./summary/test",sess.graph)
     sess.run(tf.global_variables_initializer())
-    for i_epoch in range(epoch):
-        for i in range(total_batch):
-            batch = mnist.train_data.next_batch(batch_size)
-            xs = np.reshape(batch[0],(-1,28,28,1))
-            ys = batch[1]
-            summary, _ = sess.run([merged,train_step],feed_dict = { x: xs, y_: ys })
-            train_writer.add_summary(summary,i_epoch*total_batch+i)
-
-            if i % 2000 == 0:
-                train_accuracy = accuracy.eval(feed_dict = { x: xs, y_: ys})
-                print("epoch %d, batch_iteration %d, train_accuracy %g" % (i_epoch,i,train_accuracy))
-                print("cross entropy %g" % sess.run(cross_entropy, feed_dict = { x:xs,y_:ys}))
-                valid_accuracy = accuracy.eval(feed_dict = { x: np.reshape(mnist.valid_data.images,(-1,28,28,1)), y_: mnist.valid_data.labels})
-                print("validation accuracy %g" % valid_accuracy)
-    saved_model = saver.save(sess,'./temp-bn-save')
-
-print("Training is over")            
+    saver.restore(sess,'./temp-bn-save')
+    print("test accuracy %g" %  accuracy.eval(feed_dict = { x: np.reshape(mnist.test_data.images,(-1,28,28,1)), y_: mnist.test_data.labels}))
+            
