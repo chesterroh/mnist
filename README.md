@@ -6,8 +6,9 @@
 - (AI:DONE) Batch normalization from-scratch implementation
   ==> reference point is at: http://r2rt.com/implementing-batch-normalization-in-tensorflow.html
   
-- (AI) model save/restore 
-- (AI) BN inference after saved model restore + I SHOULD test the model with 'is_training=False'
+- (AI:DONE) model save/restore 
+- (AI:DONE) BN inference after saved model restore + I SHOULD test the model with 'is_training=False'
+    --- previous test accuracy w/o BN was around 97%, should there be any progress?
 
 - (AI:DONE) refactoring to inference/train/test module based on TF tutorial
 
@@ -17,4 +18,9 @@
 - using a i) deeper/complext convolutional network, ii) applying batch normalization from scratch is a main objective of this run. 
 
 - test accuracy 97% 정도가 나옴 .... 다른 top-tier network 이랑 비교해봤을때 나쁘지 않은 수준..
-- learning rate decay 걸어보니까 오히려 결과 나빠짐... epoch 은 10, 처음 1e-4 로 출발해서 낮
+- Adam optimizer is better than SGD ,,,  test accuracy 94% vs 97%
+
+* Dataset I'm using is not conventional mnist digit dataset which is 0~9. What I'm using is mnist character dataset from A~J. After looking through the dataset, it seems that it would have slightly less accuracy than the digits, it seems a little bit more difficult.
+
+
+

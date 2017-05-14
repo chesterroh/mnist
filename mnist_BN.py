@@ -108,7 +108,7 @@ def train(net,labels,cost):
 
 batch_size = 50
 total_batch = int(mnist.train_data.data_length/batch_size)
-epoch = 1
+epoch = 10
 
 x = tf.placeholder(tf.float32,[None,28,28,1])
 y_  = tf.placeholder(tf.float32,[None,10])
