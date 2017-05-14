@@ -1,9 +1,10 @@
 
 # May 13
 
-- (AI) Batch normalization from-scratch implementation  
+- (AI) Batch normalization from-scratch implementation
+  ==> reference point is at: http://r2rt.com/implementing-batch-normalization-in-tensorflow.html
 - (AI) model save/restore 
-- (AI) BN inference after saved model restore + refactoring to inference/train/test module
+- (AI) BN inference after saved model restore + refactoring to inference/train/test module based on TF tutorial
 
 
 # May 12 
