@@ -1,11 +1,12 @@
 
 # May 13
 
+- code refactored to have more succinct structure / gainged 97% with mnist A~J data, not digit data
+
 - (AI) Batch normalization from-scratch implementation
   ==> reference point is at: http://r2rt.com/implementing-batch-normalization-in-tensorflow.html
 - (AI) model save/restore 
 - (AI) BN inference after saved model restore + refactoring to inference/train/test module based on TF tutorial
-
 
 # May 12 
 

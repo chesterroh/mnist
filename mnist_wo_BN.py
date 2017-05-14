@@ -4,6 +4,7 @@ from mnist import MnistData
 import tensorflow as tf
 import numpy as np
 
+# if pickle file doesn't exist, should run 'hw3.py' to get the A~J mnist data
 pickle_file = 'notMNIST_sanit.pickle'
 mnist = MnistData(pickle_file,one_hot=True)
 
@@ -125,3 +126,4 @@ for i_epoch in range(epoch):
 
 print("test accuracy %g" %  accuracy.eval(feed_dict = { x: np.reshape(mnist.test_data.images,(-1,28,28,1)), y_: mnist.test_data.labels, keep_prob: 1.0}))
             
+## test accuracy 97 % 
