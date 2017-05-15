@@ -10,9 +10,8 @@
   
 - (AI:DONE) model save/restore 
 - (AI:DONE) BN inference after saved model restore + I SHOULD test the model with 'is_training=False'
-    --- previous test accuracy w/o BN was around 97%, should there be any progress? ==> 97.2% I think that's the limitation of this dataset..
+    --- previous test accuracy w/o BN was around 97%, should there be any progress? ==> 97.2% I think that's the limitation of this dataset.. ==> 97.2% after 20 epochs...  ==> 97.5% after 50 epochs 
     
-
 - (AI:DONE) refactoring to inference/train/test module based on TF tutorial
 
 # May 12 
