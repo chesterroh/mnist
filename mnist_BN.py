@@ -24,26 +24,48 @@ def inference(input,is_training):
     def conv_2_block(input,i_ch,o_ch,name,is_training):
         with tf.name_scope(name):
             w_conv1 = weight_variable([3,3,i_ch,o_ch])
-            z_bn1 = bn_wrap(conv2d(input,w_conv1),o_ch,is_training)
+            y_conv1 = conv2d(input,w_conv1)
+            tf.summary.histogram('conv1',y_conv1)
+            z_bn1 = bn_wrap(y_conv1,o_ch,is_training)
+            tf.summary.histogram('bn-1',z_bn1)
             h_conv1 = tf.nn.relu(z_bn1)
+            tf.summary.histogram('activation-1',h_conv1)
             w_conv2 = weight_variable([3,3,o_ch,o_ch])
-            z_bn2 = bn_wrap(conv2d(h_conv1,w_conv2),o_ch,is_training)
+            y_conv2 = conv2d(h_conv1,w_conv2)
+            tf.summary.histogram('conv2',y_conv2)
+            z_bn2 = bn_wrap(y_conv2,o_ch,is_training)
+            tf.summary.histogram('bn-2',z_bn2)
             h_conv2 = tf.nn.relu(z_bn2)
+            tf.summary.histogram('activation-2',h_conv2)
             h_pool = max_pool_2x2(h_conv2)
+            tf.summary.histogram('pool',h_pool)
             return h_pool
     
     def conv_3_block(input,i_ch,o_ch,name,is_training):
         with tf.name_scope(name):
             w_conv1 = weight_variable([3,3,i_ch,o_ch])
-            z_bn1 = bn_wrap(conv2d(input,w_conv1),o_ch,is_training)
+            y_conv1 = conv2d(input,w_conv1)
+            tf.summary.histogram('conv1',y_copnv1)
+            z_bn1 = bn_wrap(y_conv1,o_ch,is_training)
+            tf.summary.histogram('bn1',z_bn1)
             h_conv1 = tf.nn.relu(z_bn1)
+            tf.summary.histogram('activation1',h_conv1)
             w_conv2 = weight_variable([3,3,o_ch,o_ch])
-            z_bn2 = bn_wrap(conv2d(h_conv1,w_conv2),o_ch,is_training)
+            y_conv2 = conv2d(h_conv1,w_conv2)
+            tf.summary.histogram('conv2',y_conv2)
+            z_bn2 = bn_wrap(y_conv2,o_ch,is_training)
+            tf.summary.histogram('bn2',z_bn2)
             h_conv2 = tf.nn.relu(z_bn2)
+            tf.summary.histogram('activation2',h_conv2)
             w_conv3 = weight_variable([3,3,o_ch,o_ch])
-            z_bn3 = bn_wrap(conv2d(h_conv2,w_conv3),o_ch,is_training)
+            y_conv3 = conv2d(h_conv2,w_conv3)
+            tf.summary.histogram('conv3',y_conv3)
+            z_bn3 = bn_wrap(y_conv3,o_ch,is_training)
+            tf.summary.histogram('bn3',z_bn3)
             h_conv3 = tf.nn.relu(z_bn3)
+            tf.summary.histogram('activation3',h_conv3)
             h_pool = max_pool_2x2(h_conv3)
+            tf.summary.histogram('pool',h_pool)
             return h_pool
     
     def fc_block(input,i_shape,o_shape,name,relu=True):
