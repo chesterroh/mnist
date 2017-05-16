@@ -45,7 +45,7 @@ def inference(input,is_training):
         with tf.name_scope(name):
             w_conv1 = weight_variable([3,3,i_ch,o_ch])
             y_conv1 = conv2d(input,w_conv1)
-            tf.summary.histogram('conv1',y_copnv1)
+            tf.summary.histogram('conv1',y_conv1)
             z_bn1 = bn_wrap(y_conv1,o_ch,is_training)
             tf.summary.histogram('bn1',z_bn1)
             h_conv1 = tf.nn.relu(z_bn1)
