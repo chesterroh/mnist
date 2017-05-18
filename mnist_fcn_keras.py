@@ -31,7 +31,7 @@ model.fit(x_train,y_labels, epochs=10,batch_size=100)
 
 x_test = np.reshape(mnist.test_data.images,[-1,784])
 y_test = mnist.test_data.labels
-score = model.evaluation(x_test,y_test, batch_size=128)
+score = model.evaluate(x_test,y_test, batch_size=128)
 
 
 
